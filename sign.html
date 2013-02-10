@@ -11,30 +11,32 @@
 
 <p>Sign your name here!</p>
 
+<form action="/sign" method="post">
 <table>
     <tr>
         <td>Name</td>
-        <td><input type="text"/></td>
+        <td><input name="name" type="text"/></td>
     </tr>
     <tr>
         <td>Subfield</td>
-        <td><input type="text"/></td>
+        <td><input name="subfield" type="text"/></td>
     </tr>
     <tr>
         <td>Affiliation</td>
-        <td><input type="text"/></td>
+        <td><input name="affiliation" type="text"/></td>
     </tr>
     <tr>
         <td>Pledges</td>
         <td>
-          <label><input type="checkbox"/>won't publish</label>
-          <label><input type="checkbox"/>won't review</label>
-          <label><input type="checkbox"/>won't join/renew</label>
+          <label><input name="wontpublish" type="checkbox"/>won't publish</label>
+          <label><input name="wontreview" type="checkbox"/>won't review</label>
+          <label><input name="wontjoin" type="checkbox"/>won't join/renew</label>
         </td>
     </tr>
 </table>
 
 <br/><input type="submit" value="Sign"/>
+</form>
 
 </body>
 </html>
