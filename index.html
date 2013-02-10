@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+  <title>tear down this paywall</title>
+  <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+</head>
+<body>
+
+<h1><a href="/">ACM: tear down this paywall.</a></h1>
+
+<p class="big">We, the undersigned, demand that the Association for Computing Machinery
+make the complete contents of the Digital Library available to everybody.</p>
+
+<p class="count">{{count}} have signed so far!
+(<a href="/allsignatures">see all</a>)</p>
+
+<p class="sign"><a href="/sign">Sign your support!</a></p>
+
+<div class="explanation">
+<p>If USENIX, the Association for Computational Linguistics and NIPS (among
+others) can commit to Open Access, then the ACM can also find a way. Computer
+Science research is too important to hide behind a paywall, and in any case it
+rightly belongs to the public.</p>
+
+<p>Individual signers may make particular pledges for any or all of the
+following until all of the ACM Digital Library is Open Access: (a) not publish
+in ACM venues (b) not review for ACM venues (c) not buy/renew ACM membership,
+and (d) continue to raise the issue to anybody who will listen.</p>
+</div>
+
+<div class="mostrecent">
+<p>Most recent signatories:</p>
+<ul>
+{% for signer in mostrecent %}
+    <li class="signer">{{signer.name|escape}}
+        {% if signer.subfield %}
+        <span class="details">{{signer.subfield|escape}}</span>
+        {% endif %}
+        {% if signer.affiliation %}
+            <span class="details">{{signer.affiliation|escape}}</span>
+        {% endif %}
+    </li>
+{% endfor %}
+</ul>
+</div>
+
+</body>
+</html>
