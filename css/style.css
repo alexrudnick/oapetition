@@ -2,7 +2,7 @@ body {
   font-family: Verdana, Helvetica, sans-serif;
   font-size: 20pt;
   color: #000;
-  background-color: #b3b3b3;
+  background-color: #bbbbbb;
   margin-left: 3em;
   margin-right: 3em;
 }
@@ -12,7 +12,7 @@ div.explanation {
   width: 50%;
 }
 
-div.mostrecent {
+div.signinfo {
   float: right;
   width: 40%;
 }
@@ -21,8 +21,19 @@ p.big {
   font-size: 30pt;
 }
 
-p.count {
+p.sign {
   text-align: center;
+}
+
+p.sign a {
+  color: blue;
+  text-decoration: none;
+  padding: 1em;
+  border: 3px solid blue;
+  border-radius: 10px;
+}
+
+p.count {
   font-style: italic;
 }
 
@@ -39,4 +50,8 @@ span.details {
 h1 a {
     color: #000;
     text-decoration: none;
+}
+
+p.source {
+  font-size: 10pt;
 }

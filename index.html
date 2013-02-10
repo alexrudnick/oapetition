@@ -12,10 +12,7 @@
 <p class="big">We, the undersigned, demand that the Association for Computing Machinery
 make the complete contents of the Digital Library available to everybody.</p>
 
-<p class="count">{{count}} have signed so far!
-(<a href="/allsignatures">see all</a>)</p>
-
-<p class="sign"><a href="/sign">Sign your support!</a></p>
+<p class="sign"><a href="/sign">Add your signature</a></p>
 
 <div class="explanation">
 <p>If USENIX, the Association for Computational Linguistics and NIPS (among
@@ -29,21 +26,29 @@ in ACM venues (b) not review for ACM venues (c) not buy/renew ACM membership,
 and (d) continue to raise the issue to anybody who will listen.</p>
 </div>
 
-<div class="mostrecent">
-<p>Most recent signatories:</p>
-<ul>
-{% for signer in mostrecent %}
-    <li class="signer">{{signer.name|escape}}
-        {% if signer.subfield %}
-        <span class="details">{{signer.subfield|escape}}</span>
-        {% endif %}
-        {% if signer.affiliation %}
-            <span class="details">{{signer.affiliation|escape}}</span>
-        {% endif %}
-    </li>
-{% endfor %}
-</ul>
+<div class="signinfo">
+  <p class="count">{{count}} have signed so far.</p>
+
+  <p><a href="/allsignatures">See all signatures.</a></p>
+
+  <p>Most recent signatures:</p>
+  <ul>
+  {% for signer in mostrecent %}
+      <li class="signer">{{signer.name|escape}}
+          {% if signer.subfield %}
+          <span class="details">{{signer.subfield|escape}}</span>
+          {% endif %}
+          {% if signer.affiliation %}
+              <span class="details">{{signer.affiliation|escape}}</span>
+          {% endif %}
+      </li>
+  {% endfor %}
+  </ul>
 </div>
 
+<br clear="all"/>
+<p class="source">
+<a href="http://github.com/alexrudnick/oapetition">(source on github)</a>
+</p>
 </body>
 </html>
