@@ -55,3 +55,8 @@ h1 a {
 p.source {
   font-size: 10pt;
 }
+
+input {
+  font-family: Verdana, Helvetica, sans-serif;
+  font-size: 20pt;
+}
