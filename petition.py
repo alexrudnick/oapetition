@@ -68,9 +68,10 @@ class SignPage(webapp2.RequestHandler):
         signature.name = self.request.get('name')
         signature.subfield = self.request.get('subfield')
         signature.affiliation = self.request.get('affiliation')
-        signature.wontpublish = self.request.get('wontpublish') or False
-        signature.wontreview = self.request.get('wontreview') or False
-        signature.wontjoin = self.request.get('wontjoin') or False
+
+        signature.wontpublish = bool(self.request.get('wontpublish'))
+        signature.wontreview = bool(self.request.get('wontreview'))
+        signature.wontjoin = bool(self.request.get('wontjoin'))
         signature.put()
         self.redirect('/?thanks')
 
