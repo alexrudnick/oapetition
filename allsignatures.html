@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+  <title>tear down this paywall</title>
+  <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+</head>
+<body>
+
+<h1><a href="/">ACM: tear down this paywall.</a></h1>
+
+<p class="big">We, the undersigned researchers, technologists and citizens,
+demand that the Association for Computing Machinery make the complete contents
+of the Digital Library available to everybody.</p>
+
+<p class="sign"><a href="/sign">Add your signature</a></p>
+
+  <p>All signatures:</p>
+  <ul>
+  {% for signature in signatures %}
+      <li class="signer">{{signature.name|escape}}
+          {% if signature.subfield %}
+          <span class="details">{{signature.subfield|escape}}</span>
+          {% endif %}
+          {% if signature.affiliation %}
+              <span class="details">{{signature.affiliation|escape}}</span>
+          {% endif %}
+      </li>
+  {% endfor %}
+  </ul>
+
+<br clear="all"/>
+<p class="source">
+<a href="http://github.com/alexrudnick/oapetition">(source on github)</a>
+</p>
+</body>
+</html>
