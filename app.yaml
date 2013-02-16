@@ -8,6 +8,10 @@ handlers:
 - url: /css
   static_dir: css
 
+- url: /thanks
+  static_files: thanks.html
+  upload: thanks.html
+
 - url: /.*
   script: petition.app
 

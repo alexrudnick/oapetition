@@ -1,9 +1,13 @@
-import webapp2
-import jinja2
+import string
+import random
 import os
 import cgi
-from google.appengine.api import users
+
+import webapp2
+import jinja2
 from google.appengine.ext import db
+
+import signaturecount
 
 KEY = db.Key.from_path("OAPETITION", "OAPETITION")
 
@@ -18,19 +22,22 @@ class Signature(db.Model):
     wontreview = db.BooleanProperty()
     wontjoin = db.BooleanProperty()
     date = db.DateTimeProperty(auto_now_add=True)
+    activationkey = db.StringProperty()
+    activated = db.BooleanProperty()
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
-        self.response.headers['Content-Type'] = 'text/html'
+        count = signaturecount.get_count()
         mostrecent = db.GqlQuery("SELECT * "
                                  "FROM Signature "
                                  "WHERE ANCESTOR IS :1 "
                                  "ORDER BY date DESC LIMIT 10",
                                  KEY)
         template_values = {
-            'count': 100,
+            'count': count,
             'mostrecent': mostrecent
         }
+        self.response.headers['Content-Type'] = 'text/html'
         template = jinja_environment.get_template('index.html')
         self.response.out.write(template.render(template_values))
 
@@ -43,6 +50,7 @@ class AllSignatures(webapp2.RequestHandler):
         signatures = db.GqlQuery("SELECT * "
                                  "FROM Signature "
                                  "WHERE ANCESTOR IS :1 "
+                                 "  AND activated = TRUE "
                                  "ORDER BY date DESC",
                                  KEY)
         for signature in signatures:
@@ -51,32 +59,42 @@ class AllSignatures(webapp2.RequestHandler):
         template = jinja_environment.get_template('allsignatures.html')
         self.response.out.write(template.render(template_values))
 
+def generate_activationkey():
+    chars = string.ascii_letters
+    return "".join(random.sample(chars, 8))
+
 class SignPage(webapp2.RequestHandler):
     def get(self):
-        user = users.get_current_user()
-        if not user:
-            self.redirect(users.create_login_url(self.request.uri))
         template_values = {}
         template = jinja_environment.get_template('sign.html')
         self.response.out.write(template.render(template_values))
 
     def post(self):
-        user = users.get_current_user()
-        if not user:
-            self.redirect(users.create_login_url('/sign'))
         signature = Signature(parent=KEY)
         signature.name = self.request.get('name')
         signature.subfield = self.request.get('subfield')
         signature.affiliation = self.request.get('affiliation')
-
         signature.wontpublish = bool(self.request.get('wontpublish'))
         signature.wontreview = bool(self.request.get('wontreview'))
         signature.wontjoin = bool(self.request.get('wontjoin'))
+
+        signature.activated = False
+        signature.activationkey = generate_activationkey()
         signature.put()
-        self.redirect('/?thanks')
+
+        send_confirmation_email(signature)
+        self.redirect('/thanks')
+
+class ActivatePage(webapp2.RequestHandler):
+    def get(self):
+        signaturecount.increment()
+        template_values = {}
+        template = jinja_environment.get_template('activate.html')
+        self.response.out.write(template.render(template_values))
 
 app = webapp2.WSGIApplication([
                                ('/', MainPage),
                                ('/sign', SignPage),
+                               ('/activate', ActivatePage),
                                ('/allsignatures', AllSignatures)
                               ], debug=True)
