@@ -6,24 +6,42 @@
   <link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
 <body>
+<script>
+function maybepopvalidation() {
+  if (window.location.search == "?notquiteright") {
+    alert("Couldn't validate your input; please enter at least a name and "
+          + "an email address.");
+  }
+}
+window.onload=function(){maybepopvalidation()};
+</script>
 
 <h1><a href="/">ACM: tear down this paywall.</a></h1>
 
-<p>Sign your name here!</p>
+<p>Add your name here!</p>
 
 <form action="/sign" method="post">
 <table>
     <tr>
-        <td>Name</td>
-        <td><input name="name" type="text"/></td>
+        <td>Name
+        <div class="small">Required. Will be public.</div>
+        </td>
+        <td><input name="name" type="text" maxlength="80"/></td>
+    </tr>
+    <tr>
+        <td>email address
+         <div class="small">Required. Only used once to verify your
+           identity.<br/> Never displayed, never shared.</div>
+        </td>
+        <td><input name="email" type="text" maxlength="80"/></td>
     </tr>
     <tr>
         <td>Subfield</td>
-        <td><input name="subfield" type="text"/></td>
+        <td><input name="subfield" type="text" maxlength="80"/></td>
     </tr>
     <tr>
         <td>Affiliation</td>
-        <td><input name="affiliation" type="text"/></td>
+        <td><input name="affiliation" type="text" maxlength="80"/></td>
     </tr>
     <tr>
         <td>I plan to refrain from:</td>

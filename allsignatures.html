@@ -14,24 +14,19 @@ demand that the Association for Computing Machinery make the complete contents
 of the Digital Library available to everybody.</p>
 
 <p class="sign"><a href="/sign">Add your signature</a></p>
-
-  <p>All signatures:</p>
-  <ul>
-  {% for signature in signatures %}
-      <li class="signer">{{signature.name|escape}}
-          {% if signature.subfield %}
-          <span class="details">{{signature.subfield|escape}}</span>
-          {% endif %}
-          {% if signature.affiliation %}
-              <span class="details">{{signature.affiliation|escape}}</span>
-          {% endif %}
-      </li>
-  {% endfor %}
-  </ul>
-
-<br clear="all"/>
-<p class="source">
-<a href="http://github.com/alexrudnick/oapetition">(source on github)</a>
-</p>
+<p>All signatures:</p>
+<ul>
+{% for signature in signatures %}
+  <li class="signer">{{signature.name|escape}}
+    {% if signature.subfield %}
+    <span class="details">{{signature.subfield|escape}}</span>
+    {% endif %}
+    {% if signature.affiliation %}
+    <span class="details">{{signature.affiliation|escape}}</span>
+    {% endif %}
+  </li>
+{% endfor %}
+</ul>
+<p><a href="/">[back to the front page]</a></p>
 </body>
 </html>
