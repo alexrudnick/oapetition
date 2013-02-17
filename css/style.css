@@ -25,7 +25,8 @@ p.big {
 
 p.sign {
   text-align: center;
-  margin: 2em;
+  margin-top: 2em;
+  margin-bottom: 1.5em;
 }
 
 p.sign a {
