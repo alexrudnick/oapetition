@@ -11,12 +11,12 @@ body {
 
 div.explanation {
   float: left;
-  width: 50%;
+  width: 60%;
 }
 
 div.signinfo {
   float: right;
-  width: 40%;
+  width: 30%;
 }
 
 p.big {
@@ -44,14 +44,14 @@ p.count {
   font-style: italic;
 }
 
-li.signer {
+li.signature {
   font-style: italic;
-  font-size: 15pt;
+  font-size: 14pt;
 }
 
 span.details {
     color: #666;
-    font-size: 10pt;
+    font-size: 8pt;
 }
 
 .small {
