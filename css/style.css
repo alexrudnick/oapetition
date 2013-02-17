@@ -2,7 +2,7 @@
 
 body {
   font-family: 'Oxygen', sans-serif;
-  font-size: 20pt;
+  font-size: 14pt;
   color: #000;
   background-color: #ccc;
   margin-left: 3em;
@@ -20,7 +20,7 @@ div.signinfo {
 }
 
 p.big {
-  font-size: 30pt;
+  font-size: 20pt;
 }
 
 p.sign {
@@ -46,7 +46,7 @@ p.count {
 
 li.signature {
   font-style: italic;
-  font-size: 14pt;
+  font-size: 12pt;
 }
 
 span.details {
@@ -70,7 +70,7 @@ p.source {
 
 input {
   font-family: Verdana, Helvetica, sans-serif;
-  font-size: 20pt;
+  font-size: 14pt;
 }
 
 html {overflow-y: scroll;}
