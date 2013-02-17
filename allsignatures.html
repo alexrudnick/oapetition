@@ -18,12 +18,18 @@ of the Digital Library available to everybody.</p>
 <ul>
 {% for signature in signatures %}
   <li class="signer">{{signature.name|escape}}
+    <span class="details">
     {% if signature.subfield %}
-    <span class="details">{{signature.subfield|escape}}</span>
+    {{signature.subfield|escape}}{% if signature.affiliation %},{% endif %}
     {% endif %}
     {% if signature.affiliation %}
-    <span class="details">{{signature.affiliation|escape}}</span>
+    {{signature.affiliation|escape}}
     {% endif %}
+    {% if (signature.wontpublish or signature.wontreview or signature.wontjoin) %}<br/>{% endif %}
+    {% if signature.wontpublish %}[won't publish]{% endif %}
+    {% if signature.wontreview %}[won't review]{% endif %}
+    {% if signature.wontjoin %}[won't join]{% endif %}
+    </span>
   </li>
 {% endfor %}
 </ul>

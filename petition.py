@@ -85,7 +85,8 @@ def send_confirmation_email(signature):
     """Send an email with the activation link."""
     name = signature.name
     message = mail.EmailMessage(
-        sender="teardownthispaywall <noreply@teardownthispaywall.appspot.com>",
+        sender=\
+        "teardownthispaywall <noreply@teardownthispaywall.appspotmail.com>",
         subject="teardownthispaywall: signature activation link")
     url = "http://teardownthispaywall.appspot.com/activate?id={0}&key={1}"
     url = url.format(signature.key().id(), signature.activationkey)

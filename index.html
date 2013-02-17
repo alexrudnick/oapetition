@@ -14,20 +14,33 @@ demand that the Association for Computing Machinery make the complete contents
 of the Digital Library available to everybody.</p>
 
 <p class="sign"><a href="/sign">Add your signature</a></p>
-
 <div class="explanation">
-<p>EXPLANATION ABOUT OA GOES HERE. DISCUSSION ABOUT HOW THE ACM HAS RESISTED OA
-GOES HERE. INCLUDE LINKS.</p>
+<p><strong>Computer science research is largely funded by the public, for the
+public good.</strong> The results of this research are presented in papers,
+often published by the Association for Computing Machinery, but the authors
+edit and typeset the articles themselves, and other scientists in the
+community peer-review them as volunteers. At the end of this process, the
+finished papers are not made available to the public by the publisher. Only
+those with a subscription, such as researchers from institutions that pay a fee
+to the ACM, are granted access to this taxpayer-funded work.</p>
 
-<p>If USENIX, the Association for Computational Linguistics and NIPS (among
-others) can commit to Open Access, then the ACM can also find a way. Computer
-Science research is too important to hide behind a paywall, and in any case it
-rightly belongs to the public.</p>
+<p><strong>It doesn't have to be this way.</strong> If other professional
+societies in computing, such as <a
+href="https://www.usenix.org/blog/usenix-supports-open-access">USENIX</a>, the
+<a href="http://aclweb.org/anthology-new/">Association for Computational
+Linguistics</a> and <a href="http://books.nips.cc/">NIPS</a> (among others) can
+commit to <a href="http://en.wikipedia.org/wiki/Open_access">Open Access</a>,
+then the ACM can also find a way to make it work. Computer science research is
+too important to hide behind a paywall, and in any case it rightly belongs to
+the public. The <a href="http://www.acm.org/about/constitution/#article2">ACM
+states as its purpose</a> "... serving both professional and public interests by
+fostering the open interchange of information..." -- we simply want it to
+succeed at this excellent goal.</p>
 
-<p>Individual signers may make particular pledges for any or all of the
-following until all of the ACM Digital Library is Open Access: (a) not publish
-in ACM venues (b) not review for ACM venues and (c) not buy/renew ACM
-membership.</p>
+<p><a href="/sign">So add your name!</a> Individual signers may pledge any or
+all of the following, until all of the ACM Digital Library is fully accessible
+to the public: (a) refuse to publish in ACM venues (b) refuse to review for ACM
+venues, or (c) refuse to buy or renew ACM memberships.</p>
 </div>
 
 <div class="signinfo">
@@ -37,14 +50,20 @@ membership.</p>
 
   <p>Most recent signatures:</p>
   <ul>
-  {% for signer in mostrecent %}
-      <li class="signer">{{signer.name|escape}}
-          {% if signer.subfield %}
-          <span class="details">{{signer.subfield|escape}}</span>
+  {% for signature in mostrecent %}
+      <li class="signature">{{signature.name|escape}}
+          <span class="details">
+          {% if signature.subfield %}
+          {{signature.subfield|escape}}{% if signature.affiliation %},{% endif %}
           {% endif %}
-          {% if signer.affiliation %}
-              <span class="details">{{signer.affiliation|escape}}</span>
+          {% if signature.affiliation %}
+          {{signature.affiliation|escape}}
           {% endif %}
+          {% if (signature.wontpublish or signature.wontreview or signature.wontjoin) %}<br/>{% endif %}
+          {% if signature.wontpublish %}[won't publish]{% endif %}
+          {% if signature.wontreview %}[won't review]{% endif %}
+          {% if signature.wontjoin %}[won't join]{% endif %}
+          </span>
       </li>
   {% endfor %}
   </ul>

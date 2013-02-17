@@ -18,47 +18,43 @@ window.onload=function(){maybepopvalidation()};
 
 <h1><a href="/">ACM: tear down this paywall.</a></h1>
 
-<p>Add your name here!</p>
-
 <form action="/sign" method="post">
+<p>Until the ACM makes the contents of the Digital Library publicly
+available, I plan to refrain from:
+<label><input name="wontpublish" type="checkbox"/>publishing in ACM
+venues</label><br/>
+<label><input name="wontreview" type="checkbox"/>reviewing for ACM
+venues</label><br/>
+<label><input name="wontjoin" type="checkbox"/>joining the ACM, or if I am
+currently a member, renewing my membership<br/>
+<span class="small">Please check the above items that apply to you.</span>
+</p>
 <table>
     <tr>
-        <td>Name
+        <td>Your name
         <div class="small">Required. Will be public.</div>
         </td>
         <td><input name="name" type="text" maxlength="80"/></td>
     </tr>
     <tr>
-        <td>email address
+        <td>Email address
          <div class="small">Required. Only used once to verify your
            identity.<br/> Never displayed, never shared.</div>
         </td>
         <td><input name="email" type="text" maxlength="80"/></td>
     </tr>
     <tr>
-        <td>Subfield</td>
+        <td>Subfield
+         <div class="small">Optional. e.g., programming languages, graphics,
+         natural language processing...</div>
+        </td>
         <td><input name="subfield" type="text" maxlength="80"/></td>
     </tr>
     <tr>
-        <td>Affiliation</td>
-        <td><input name="affiliation" type="text" maxlength="80"/></td>
-    </tr>
-    <tr>
-        <td>I plan to refrain from:</td>
-        <td><label><input name="wontpublish" type="checkbox"/>publishing in ACM
-                venues</label></td>
-    </tr>
-    <tr>
-        <td/>
-        <td><label><input name="wontreview" type="checkbox"/>reviewing for ACM
-                venues</label></td>
-    </tr>
-    <tr>
-        <td/>
-        <td>
-          <label><input name="wontjoin" type="checkbox"/>joining the ACM or
-              renewing my membership</label>
+        <td>Affiliation
+         <div class="small">Optional. Your school or employer, if any.</div>
         </td>
+        <td><input name="affiliation" type="text" maxlength="80"/></td>
     </tr>
 </table>
 
