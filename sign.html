@@ -27,9 +27,6 @@ function validateInput() {
     alert("Please enter an email address.");
     return false;
   }
-  if (!$('wontpublish').checked && !$('wontreview').checked && !$('wontjoin').checked) {
-    return confirm("Just to make sure: did you mean to sign without checking any of the three boxes?");
-  }
 }
 
 window.onload=function(){maybepopvalidation()};
