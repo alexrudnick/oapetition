@@ -7,8 +7,6 @@
 </head>
 <body>
 <script>
-verifiedCheckboxes = false;
-
 function $(x) {
   return document.getElementById(x);
 }
@@ -30,7 +28,7 @@ function validateInput() {
     return false;
   }
   if (!$('wontpublish').checked && !$('wontreview').checked && !$('wontjoin').checked) {
-    return confirm("Are you sure you meant to sign without checking any of the three boxes?");
+    return confirm("Just to make sure: did you mean to sign without checking any of the three boxes?");
   }
 }
 
