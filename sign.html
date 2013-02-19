@@ -7,12 +7,33 @@
 </head>
 <body>
 <script>
+verifiedCheckboxes = false;
+
+function $(x) {
+  return document.getElementById(x);
+}
+
 function maybepopvalidation() {
   if (window.location.search == "?notquiteright") {
     alert("Couldn't validate your input; please enter at least a name and "
           + "an email address.");
   }
 }
+
+function validateInput() {
+  if ($('name').value == "") {
+    alert("Please enter a name.");
+    return false;
+  }
+  if ($('email').value == "") {
+    alert("Please enter an email address.");
+    return false;
+  }
+  if (!$('wontpublish').checked && !$('wontreview').checked && !$('wontjoin').checked) {
+    return confirm("Are you sure you meant to sign without checking any of the three boxes?");
+  }
+}
+
 window.onload=function(){maybepopvalidation()};
 </script>
 
@@ -21,11 +42,11 @@ window.onload=function(){maybepopvalidation()};
 <form action="/sign" method="post">
 <p>Until the ACM makes the contents of the Digital Library publicly
 available, I plan to refrain from:<br/>
-<label><input name="wontpublish" type="checkbox"/>publishing in ACM
+<label><input id="wontpublish" name="wontpublish" type="checkbox"/>publishing in ACM
 venues</label><br/>
-<label><input name="wontreview" type="checkbox"/>reviewing for ACM
+<label><input id="wontreview" name="wontreview" type="checkbox"/>reviewing for ACM
 venues</label><br/>
-<label><input name="wontjoin" type="checkbox"/>joining the ACM, or if I am
+<label><input id="wontjoin" name="wontjoin" type="checkbox"/>joining the ACM, or if I am
 currently a member, renewing my membership<br/>
 <span class="small">Please check the above items that apply to you.</span>
 </p>
@@ -34,14 +55,14 @@ currently a member, renewing my membership<br/>
         <td>Your name
         <div class="small">Required. Will be public.</div>
         </td>
-        <td><input name="name" type="text" maxlength="80"/></td>
+        <td><input id="name" name="name" type="text" maxlength="80"/></td>
     </tr>
     <tr>
         <td>Email address
          <div class="small">Required. Only used once to verify your
            identity.<br/> Never displayed, never shared.</div>
         </td>
-        <td><input name="email" type="text" maxlength="80"/></td>
+        <td><input id="email" name="email" type="text" maxlength="80"/></td>
     </tr>
     <tr>
         <td>Subfield
@@ -58,7 +79,7 @@ currently a member, renewing my membership<br/>
     </tr>
 </table>
 
-<br/><input type="submit" value="Sign"/>
+<br/><input type="submit" value="Sign" onclick="return validateInput();"/>
 </form>
 
 </body>
